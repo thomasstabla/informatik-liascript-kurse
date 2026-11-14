@@ -1,6 +1,6 @@
 <!--
 author: Thomas Stabla
-version: 1.0.0
+version: 1.1.0
 language: de
 comment: Interaktiver Einstieg in Python-Grundlagen für eine 90-minütige Unterrichtseinheit in Klasse 11.
 tags: Informatik, Python, Klasse 11, Grundlagen, Kurs
@@ -23,8 +23,6 @@ Die Codefelder lassen sich im Browser bearbeiten und ausführen. Dafür ist eine
 **So arbeitest du:** Die Aufgaben mit **Basis** bearbeitest du zuerst. **Zusatz** ist freiwillig und für dich gedacht, wenn du schneller fertig bist oder eine größere Herausforderung suchst. Nutze Hilfestellungen erst, wenn du selbst einen Lösungsweg versucht hast.
 
 **Sichere deine Programme:** Lege eine Textdatei mit dem Namen `Python_Grundlagen_Nachname.txt` an. Kopiere nach jeder Programmieraufgabe deinen getesteten Code hinein und versehe ihn mit einer Überschrift, zum Beispiel `1. Speisekarte` oder `2. Getränkeautomat`. Speichere die Datei in deinem persönlichen Schulordner oder bei LernSax.
-
-**Zeitplan für 90 Minuten:** etwa 5 Minuten Einstiegscheck, etwa 10 Minuten pro Kapitel für die Basisaufgaben, danach Zeit für Zusatzaufgaben und die Abschluss-Challenge. Plane zum Schluss etwa 5 Minuten für den Rückblick ein.
 
 ### Einstiegscheck: Was kannst du schon?
 
@@ -165,6 +163,26 @@ print("Willkommen,", name)
 ```
 @LIA.python3_withShell
 
+### Werte zuweisen und verändern
+
+Bei einer Zuweisung wird zuerst die rechte Seite ausgewertet. Danach ersetzt das Ergebnis den bisherigen Wert der Variablen. `=` bedeutet hier also eine Zuweisung, keine mathematische Gleichung.
+
+```python
+punkte = 5
+punkte = punkte + 2
+print(punkte)
+```
+@LIA.python3
+
+| Anweisung | Wert von `punkte` danach |
+| --- | --- |
+| `punkte = 5` | 5 |
+| `punkte = punkte + 2` | 7 |
+
+### Zahlen eingeben
+
+`int(...)` wandelt einen passenden Text in eine ganze Zahl um. Gib bei den Zahlenabfragen dieses Kurses ganze Zahlen ein; Texte wie `drei` oder `2.5` führen bei `int(...)` zu einem `ValueError`.
+
 Bei Zahlen:
 
 ```python
@@ -176,7 +194,7 @@ print("Preis in Euro:", preis)
 
 ### Basis-Check: Was ist die Ausgabe?
 
-Angenommen, bei der Eingabe erscheint `Mia`. Was gibt das Programm aus?
+Du gibst `Mia` ein. Welche Ausgabe erzeugt anschließend die `print`-Anweisung?
 
 ```python
 name = input("Name: ")
@@ -214,34 +232,31 @@ anzahl = int(input("Wie viele Flaschen möchtest du? "))
 <details>
 <summary>Hilfestellung 1 öffnen</summary>
 
-Eine Flasche kostet 2 Euro. Speichere diesen Einzelpreis in einer eigenen Variablen.
+Wie hängt der Preis von der Anzahl der Flaschen ab? Überlege zunächst für drei Flaschen.
 
 </details>
 
 <details>
 <summary>Hilfestellung 2 öffnen</summary>
 
-Der Gesamtpreis hängt von der Anzahl der Flaschen und dem Einzelpreis ab.
+Multipliziere die eingegebene Anzahl mit dem Preis einer Flasche. Eine zusätzliche Variable für den Einzelpreis ist möglich, aber nicht nötig.
 
 </details>
 
 <details>
 <summary>Hilfestellung 3 öffnen</summary>
 
-Multipliziere die Anzahl mit dem Einzelpreis und speichere das Ergebnis in einer weiteren Variablen.
+Speichere das Rechenergebnis in einer Variablen für den Gesamtpreis. Gib diese mit einer Beschriftung durch `print(...)` aus.
 
 </details>
 
-<details>
-<summary>Hilfestellung 4 öffnen</summary>
-
-Gib eine passende Beschriftung und anschließend den Gesamtpreis mit `print` aus.
-
-</details>
+**Teste:** 0 Flaschen → 0 Euro; 1 Flasche → 2 Euro; 3 Flaschen → 6 Euro.
 
 ### Zusatz: Pfand berechnen
 
-Erweitere deinen Getränkeautomaten: Eine Wasserflasche kostet 2 Euro. Frage zusätzlich, wie viele leere Flaschen zurückgegeben werden. Für jede zurückgegebene Flasche werden 25 Cent gutgeschrieben. Berechne den Gesamtpreis in Cent und gib ihn aus.
+Erweitere deinen Getränkeautomaten: Eine Wasserflasche kostet 2 Euro. Frage zusätzlich, wie viele leere Flaschen zurückgegeben werden. Für jede zurückgegebene Flasche werden 25 Cent gutgeschrieben. Die 2 Euro enthalten bereits das Pfand. Berechne den Gesamtpreis in Cent und gib ihn aus. Ein negativer Betrag bedeutet, dass du Geld zurückbekommst.
+
+**Teste:** Kauf von 2 Flaschen und Rückgabe von 3 Flaschen → 325 Cent; Kauf von 0 Flaschen und Rückgabe von 1 Flasche → −25 Cent.
 
 ```python
 anzahl = int(input("Wie viele Wasserflaschen möchtest du kaufen? "))
@@ -265,7 +280,18 @@ Berechne den Flaschenpreis in Cent (`anzahl * 200`). Ziehe davon die Pfandgutsch
 
 Mit `if` prüft ein Programm eine Bedingung. Ist sie wahr, wird der eingerückte Block ausgeführt. Andernfalls wird der eingerückte Block nach `else` ausgeführt.
 
-Ändere im Beispiel den Wert von `temperatur` zuerst auf `12` und führe das Programm aus. Ändere ihn danach auf `3`. Notiere, welche Ausgabe jeweils erscheint und welcher Zweig ausgeführt wird.
+Mit Vergleichsoperatoren formulierst du Bedingungen:
+
+| Operator | Bedeutung |
+| --- | --- |
+| `==` | gleich |
+| `!=` | ungleich |
+| `<` / `>` | kleiner / größer |
+| `<=` / `>=` | kleiner oder gleich / größer oder gleich |
+
+**Merke:** `=` weist einen Wert zu, `==` vergleicht zwei Werte. Nach `if` und `else` steht ein Doppelpunkt. Die zugehörigen Anweisungen werden gleich weit eingerückt, üblicherweise um vier Leerzeichen.
+
+Ändere im Beispiel den Wert von `temperatur` zuerst auf `12` und führe das Programm aus. Ändere ihn danach auf `3`. Überlege vorher, welche Ausgabe jeweils erscheint und welcher Zweig ausgeführt wird.
 
 ```python
 temperatur = 8
@@ -349,7 +375,9 @@ Der `if`-Zweig gibt den Regenschirm-Hinweis aus. Der `else`-Zweig gibt den Hinwe
 
 ### Zusatz: Versandkosten
 
-Frage nach dem Warenwert in Euro. Ab 40 Euro ist der Versand kostenlos. Bei einem niedrigeren Warenwert kommen 5 Euro Versandkosten hinzu. Gib den Gesamtbetrag aus.
+**Testfälle:** Warenwert 39 Euro → 44 Euro Gesamtbetrag; 40 Euro → 40 Euro; 41 Euro → 41 Euro.
+
+Frage nach dem Warenwert in ganzen Euro. Ab 40 Euro ist der Versand kostenlos. Bei einem niedrigeren Warenwert kommen 5 Euro Versandkosten hinzu. Gib den Gesamtbetrag aus.
 
 ```python
 warenwert = int(input("Warenwert in Euro? "))
@@ -378,6 +406,15 @@ for nummer in range(1, 4):
 ```
 @LIA.python3
 
+Mit nur einer Grenze beginnt `range` bei 0:
+
+| Ausdruck | Werte | Anzahl |
+| --- | --- | --- |
+| `range(4)` | 0, 1, 2, 3 | 4 |
+| `range(1, 4)` | 1, 2, 3 | 3 |
+
+`range(n)` ermöglicht bei einer nichtnegativen ganzen Zahl `n` genau `n` Durchläufe. Bei `n = 0` wird der Schleifenblock nicht ausgeführt.
+
 ### Basis-Check: Was ist die Ausgabe?
 
 ```python
@@ -389,20 +426,38 @@ for runde in range(1, 4):
 - [(X)] Drei Zeilen: Runde 1, Runde 2 und Runde 3
 - [( )] Eine Zeile: Runde 123
 
-### Basis-Check: Was ist die Ausgabe?
+### Eine Summe schrittweise aufbauen
+
+```python
+summe = 0
+for zahl in range(1, 4):
+    summe = summe + zahl
+print(summe)
+```
+@LIA.python3
+
+| Durchlauf | `zahl` | `summe` vorher | `summe` danach |
+| --- | --- | --- | --- |
+| 1 | 1 | 0 | 1 |
+| 2 | 2 | 1 | 3 |
+| 3 | 3 | 3 | 6 |
+
+Die Startzuweisung steht vor der Schleife, damit die bisherige Summe erhalten bleibt. Die Ausgabe steht nach der Schleife und zeigt das Endergebnis.
+
+### Basis-Check: Eine andere Summe
 
 Welche Zahl wird nach der Schleife ausgegeben?
 
 ```python
 summe = 0
 
-for zahl in range(1, 4):
+for zahl in range(2, 5):
     summe = summe + zahl
 
 print(summe)
 ```
 
-[[6]]
+[[9]]
 
 ### Basisaufgabe: Garderobenmarken nummerieren
 
@@ -419,11 +474,23 @@ pass  # Ersetze pass durch eine for-Schleife.
 Führe dein Programm aus und vergleiche die tatsächliche Ausgabe mit der Sollausgabe oben. Achte darauf, dass genau vier Zeilen mit den Nummern 101 bis 104 erscheinen.
 
 <details>
-<summary>Hilfestellung öffnen</summary>
+<summary>Hilfestellung 1 öffnen</summary>
 
-Verwende `range(101, 105)`. Die Schleifenvariable nimmt nacheinander die Werte 101, 102, 103 und 104 an. Die obere Grenze `105` gehört nicht mehr dazu.
+Welche Nummer soll zuerst erscheinen, welche zuletzt?
 
-Wenn du den Einfluss der oberen Grenze untersuchen möchtest, ändere sie testweise zu `104`. Welche Marke fehlt? Stelle danach `105` wieder her.
+</details>
+
+<details>
+<summary>Hilfestellung 2 öffnen</summary>
+
+Die obere Grenze von `range` gehört nicht mehr zu den ausgegebenen Werten.
+
+</details>
+
+<details>
+<summary>Hilfestellung 3 öffnen</summary>
+
+Wähle 101 als Start und eine Grenze unmittelbar nach 104. Gib im Schleifenblock den Text `Marke` und die Schleifenvariable mit `print(...)` aus.
 
 </details>
 
@@ -457,7 +524,7 @@ Die Schleifenvariable soll nacheinander die Werte 100 bis einschließlich 200 an
 
 <article>
 
-Eine `while`-Schleife wiederholt einen Anweisungsblock, solange ihre Bedingung wahr ist. Verändere im Schleifenblock eine Variable so, dass die Bedingung irgendwann falsch wird. Sonst läuft die Schleife unbegrenzt weiter.
+Eine `while`-Schleife prüft ihre Bedingung vor jedem Durchlauf. Solange sie wahr ist, wird der Schleifenblock ausgeführt. Ist sie schon am Anfang falsch, gibt es keinen Durchlauf. Damit die Schleife endet, muss die Bedingung irgendwann falsch werden. Im folgenden Beispiel geschieht das durch das Verringern von `sekunden`.
 
 ```python
 import time
@@ -486,7 +553,7 @@ Bei jedem Aufruf wird eine der folgenden Varianten ausgewählt. Berechne die Aus
 ```python
 stand = 1
 
-while stand < 2:
+while stand < 1:
     stand = stand + 1
 
 print(stand)
@@ -494,7 +561,7 @@ print(stand)
 
 Welche Zahl wird ausgegeben?
 
-[[2]]
+[[1]]
 
 </div>
 
@@ -521,14 +588,14 @@ Welche Zahl wird ausgegeben?
 stand = 1
 
 while stand < 4:
-    stand = stand + 1
+    stand = stand + 2
 
 print(stand)
 ```
 
 Welche Zahl wird ausgegeben?
 
-[[4]]
+[[5]]
 
 </div>
 
@@ -538,14 +605,14 @@ Welche Zahl wird ausgegeben?
 stand = 1
 
 while stand < 5:
-    stand = stand + 1
+    stand = stand + 3
 
 print(stand)
 ```
 
 Welche Zahl wird ausgegeben?
 
-[[5]]
+[[7]]
 
 </div>
 
@@ -560,6 +627,19 @@ while schritte < 5:
 ```
 
 [[6]]
+
+### Basis-Check: Kein Durchlauf?
+
+Wie oft wird `Los` ausgegeben?
+
+```python
+rest = 0
+while rest > 0:
+    print("Los")
+    rest = rest - 1
+```
+
+[[0]]
 
 ### Basisaufgabe: Sparziel
 
@@ -580,7 +660,11 @@ Solange der Kontostand kleiner als 20 ist, addierst du 5 Euro. Gib den neuen Kon
 
 </details>
 
+**Prüfe dein Sparziel:** Die Ausgabe muss nacheinander 5, 10, 15 und 20 zeigen. Ändere zum Test das Ziel auf 22 Euro: Dann muss der letzte Kontostand 25 Euro sein.
+
 ### Zusatz: Passwortversuche zählen
+
+Mit `and` verknüpfst du zwei Bedingungen: Beide müssen wahr sein. Beispiel: `alter >= 12 and alter < 18` trifft auf ein Alter von 12 bis 17 Jahren zu. `!=` bedeutet „ungleich“.
 
 Ein Programm erlaubt drei Versuche, ein Passwort einzugeben. Lege das richtige Passwort in einer Variablen fest. Wiederhole die Eingabe mit einer `while`-Schleife, solange das Passwort falsch ist und noch Versuche übrig sind. Gib anschließend aus, ob der Zugang erlaubt ist.
 
@@ -594,7 +678,7 @@ versuche = 0
 <details>
 <summary>Hilfestellung 1 öffnen</summary>
 
-Lege vor der Schleife eine Eingabevariable an. Die Schleife läuft, solange die Eingabe falsch ist **und** der Zähler kleiner als 3 ist.
+Lege vor der Schleife eine Eingabevariable mit dem leeren Text `""` an. Die Schleife läuft, solange die Eingabe falsch ist **und** der Zähler kleiner als 3 ist.
 
 </details>
 
@@ -605,15 +689,31 @@ Frage innerhalb der Schleife das Passwort ab und erhöhe danach den Zähler um 1
 
 </details>
 
-### Abschluss-Challenge: Kinokasse
+### Zusatz / Transfer: Kinokasse
 
-Schreibe ein Programm für eine kleine Kinokasse. Es soll alle folgenden Anforderungen erfüllen:
+Diese freiwillige Challenge verbindet die bisherigen Bausteine. Entwickle dein Programm in drei Schritten und teste nach jedem Schritt:
 
-1. Frage nach der Anzahl der Personen. Solange keine positive Zahl eingegeben wurde, frage erneut.
+1. **Ticketpreis:** Frage zunächst das Alter einer einzelnen Person ab und gib ihren Ticketpreis aus. Teste 17 Jahre → 6 Euro und 18 Jahre → 10 Euro.
+2. **Gesamtsumme:** Frage nach der Personenzahl, wiederhole die Altersabfrage und sammle die Ticketpreise in einer Summe.
+3. **Erweiterung:** Ergänze die erneute Abfrage bei ungültiger Personenzahl und den Gruppenrabatt.
+
+Das fertige Programm soll diese Anforderungen erfüllen:
+
+1. Frage nach der Anzahl der Personen. Frage bei 0 und negativen Zahlen erneut. Du darfst voraussetzen, dass ganze Zahlen eingegeben werden.
 2. Frage für jede Person nach dem Alter.
 3. Ein Ticket kostet für Personen unter 18 Jahren 6 Euro, sonst 10 Euro.
 4. Addiere alle Ticketpreise und gib die Gesamtsumme aus.
 5. Ab 50 Euro Gesamtpreis gibt es 5 Euro Gruppenrabatt. Gib dann den rabattierten Preis aus.
+
+**Testfälle für das fertige Programm:**
+
+| Personen und Alter | Summe vor Rabatt | Endpreis |
+| --- | --- | --- |
+| 2 Personen: 17, 18 | 16 Euro | 16 Euro |
+| 5 Personen: jeweils 18 | 50 Euro | 45 Euro |
+| 6 Personen: jeweils 18 | 60 Euro | 55 Euro |
+
+Teste zusätzlich die Eingabefolge 0, −2, 1 bei der Personenzahl: Erst 1 darf akzeptiert werden.
 
 Verwende dafür `input`, Variablen, `if/else`, eine `for`-Schleife und eine `while`-Schleife. Die Lösung steht nicht im Kursfeld: Entwickle sie selbst und teste sie mit verschiedenen Eingaben.
 
@@ -660,8 +760,12 @@ Ordne jedem Problem den passenden Baustein zu. Wähle in jeder Zeile genau eine 
 
 **Erkläre mit eigenen Worten:** Warum muss sich in einer `while`-Schleife häufig der Wert einer Variablen ändern? Notiere deine Erklärung oder tausche dich mit einer Partnerin oder einem Partner aus.
 
-Wenn bei einer Codeausführung eine Verbindungsmeldung erscheint oder der Start lange dauert, lade die Kursseite neu und probiere es erneut. Der CodeRunner führt Python auf einem externen Server aus; ohne Verbindung zu diesem Dienst funktionieren die Codefelder nicht.
+Wenn bei einer Codeausführung eine Verbindungsmeldung erscheint oder der Start lange dauert, sichere zuerst deinen bearbeiteten Code. Lade danach die Kursseite neu und probiere es erneut. Der CodeRunner führt Python auf einem externen Server aus; ohne Verbindung zu diesem Dienst funktionieren die Codefelder nicht.
 
 </article>
 
+## Arbeitsstand sichern und abgeben
 
+Erzeuge mit dem folgenden Feld einen Abgabelink und kopiere ihn in deinen Schulordner oder deine Abgabe bei LernSax. Öffne den Link zur Kontrolle und prüfe deinen gespeicherten Arbeitsstand. Bewahre deine Programme zusätzlich in der Textdatei auf, damit du sie unabhängig vom Kurs weiterverwenden kannst.
+
+@Abgabe
